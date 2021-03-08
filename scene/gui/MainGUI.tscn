@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://script/gui/SidebarVBox.gd" type="Script" id=1]
+[ext_resource path="res://script/gui/Modeline.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resource/FiraCode-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://resource/FiraCode-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://resource/FiraCode-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = SubResource( 5 )
+
+[node name="MainGUI" type="MarginContainer"]
+margin_right = 800.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainHBox" type="HBoxContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+
+[node name="Modeline" type="Label" parent="MainHBox"]
+margin_top = 569.0
+margin_right = 616.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.584314, 0.658824, 0.298039, 1 )
+text = "Text"
+script = ExtResource( 2 )
+
+[node name="SidebarVBox" type="VBoxContainer" parent="MainHBox"]
+margin_left = 620.0
+margin_right = 800.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 180, 0 )
+script = ExtResource( 1 )
+
+[node name="Sidebar" type="Label" parent="MainHBox/SidebarVBox"]
+margin_right = 180.0
+margin_bottom = 565.0
+rect_min_size = Vector2( 180, 0 )
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.584314, 0.658824, 0.298039, 1 )
+text = "Text"
+
+[node name="Help" type="Label" parent="MainHBox/SidebarVBox"]
+margin_top = 569.0
+margin_right = 180.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.584314, 0.658824, 0.298039, 1 )
+text = "Text	"

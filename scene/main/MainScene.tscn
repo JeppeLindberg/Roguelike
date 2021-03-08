@@ -1,0 +1,71 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://script/InitWorld.gd" type="Script" id=1]
+[ext_resource path="res://scene/gui/MainGUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://script/PCMove.gd" type="Script" id=3]
+[ext_resource path="res://script/MainScene.gd" type="Script" id=4]
+[ext_resource path="res://script/Schedule.gd" type="Script" id=5]
+[ext_resource path="res://script/EnemyAI.gd" type="Script" id=6]
+[ext_resource path="res://script/DungeonBoard.gd" type="Script" id=7]
+[ext_resource path="res://script/PCAttack.gd" type="Script" id=8]
+[ext_resource path="res://script/RemoveObject.gd" type="Script" id=9]
+[ext_resource path="res://script/Pathfinding.gd" type="Script" id=10]
+[ext_resource path="res://script/EnemyMove.gd" type="Script" id=11]
+[ext_resource path="res://script/MoveObject.gd" type="Script" id=12]
+[ext_resource path="res://script/EnemyAttack.gd" type="Script" id=13]
+[ext_resource path="res://script/ReloadGame.gd" type="Script" id=14]
+[ext_resource path="res://script/GameState.gd" type="Script" id=15]
+[ext_resource path="res://scene/gui/EndScreen.tscn" type="PackedScene" id=16]
+[ext_resource path="res://script/gui/EndScreen.gd" type="Script" id=17]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="InitWorld" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="MainGUI" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 780.0
+margin_bottom = 580.0
+
+[node name="PCMove" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="PCAttack" type="Node2D" parent="PCMove"]
+script = ExtResource( 8 )
+
+[node name="ReloadGame" type="Node2D" parent="PCMove"]
+script = ExtResource( 14 )
+
+[node name="Schedule" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="EnemyAI" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="EnemyMove" type="Node2D" parent="EnemyAI"]
+script = ExtResource( 11 )
+
+[node name="EnemyAttack" type="Node2D" parent="EnemyAI"]
+script = ExtResource( 13 )
+
+[node name="DungeonBoard" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="RemoveObject" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Pathfinding" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="MoveObject" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="GameState" type="Node2D" parent="."]
+script = ExtResource( 15 )
+
+[node name="EndScreen" parent="." instance=ExtResource( 16 )]
+visible = false
+script = ExtResource( 17 )

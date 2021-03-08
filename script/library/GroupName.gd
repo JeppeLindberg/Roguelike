@@ -1,0 +1,4 @@
+const PC: String = "pc"
+const GROUND: String = "ground"
+const WALL: String = "wall"
+const ENEMY: String = "enemy"
