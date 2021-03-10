@@ -16,12 +16,14 @@ var _ref_RemoveObject: RemoveObject
 var _ref_Schedule: Schedule
 
 var _current_spell: String
+var _process_input: bool = false
 
 signal emit_message(message)
 
 
 func cast_spell(spell: String) -> void:
 	_current_spell = spell
+	_process_input = true
 	
 	if spell == _new_InputName.SPELL_FIREBALL:
 		emit_signal("emit_message", "Select unit to cast a fireball on")
@@ -31,6 +33,7 @@ func cast_spell(spell: String) -> void:
 	
 	if spell == _new_InputName.SPELL_HEAL:
 		emit_signal("emit_message", "The healing energy fizzles")
+		_end_cast()
 		_ref_Schedule.end_turn()
 		return
 	
@@ -43,6 +46,7 @@ func _unhandled_input(event):
 
 
 func _end_cast():
+	_process_input = false
 	set_process_unhandled_input(false)
 	_ref_MouseControl.set_active(false)
 	_ref_PCMove.set_process_unhandled_input(true)
@@ -61,5 +65,6 @@ func _cast_spell_at(spell: String, x: int, y: int):
 
 
 func _on_MouseControl_mouse_click(x, y):
-	_cast_spell_at(_current_spell, x, y)
+	if _process_input == true:
+		_cast_spell_at(_current_spell, x, y)
 
