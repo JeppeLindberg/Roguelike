@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://script/InitWorld.gd" type="Script" id=1]
 [ext_resource path="res://scene/gui/MainGUI.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://script/GameState.gd" type="Script" id=15]
 [ext_resource path="res://scene/gui/EndScreen.tscn" type="PackedScene" id=16]
 [ext_resource path="res://script/gui/EndScreen.gd" type="Script" id=17]
+[ext_resource path="res://script/Spell.gd" type="Script" id=18]
+[ext_resource path="res://script/MouseControl.gd" type="Script" id=19]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -38,6 +40,9 @@ script = ExtResource( 8 )
 
 [node name="ReloadGame" type="Node2D" parent="PCMove"]
 script = ExtResource( 14 )
+
+[node name="Spell" type="Node2D" parent="PCMove"]
+script = ExtResource( 18 )
 
 [node name="Schedule" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -69,3 +74,6 @@ script = ExtResource( 15 )
 [node name="EndScreen" parent="." instance=ExtResource( 16 )]
 visible = false
 script = ExtResource( 17 )
+
+[node name="MouseControl" type="Node2D" parent="."]
+script = ExtResource( 19 )

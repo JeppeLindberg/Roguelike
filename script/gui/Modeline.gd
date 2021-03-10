@@ -25,6 +25,10 @@ func _on_PCAttack_pc_attacked(message: String) -> void:
 	text = message
 
 
+func _on_Spell_emit_message(message: String) -> void:
+	text = message
+
+
 func _on_PCMove_clear_message() -> void:
 	text = ""
 

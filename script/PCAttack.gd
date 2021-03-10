@@ -16,7 +16,6 @@ func attack(group_name: String, x: int, y:int) -> void:
 		return
 	
 	_ref_RemoveObject.remove(group_name, x, y)
-	_ref_Schedule.end_turn()
-	_ref_Schedule.end_turn()
 	emit_signal("pc_attacked", "You killed a dwarf!")
+	_ref_Schedule.end_turn()
 	

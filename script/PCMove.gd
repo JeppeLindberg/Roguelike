@@ -2,6 +2,7 @@ extends Node2D
 
 const PC_ATTACK: String = "PCAttack"
 const RELOAD_GAME: String = "ReloadGame"
+const SPELL: String = "Spell"
 
 const Schedule := preload("res://script/Schedule.gd")
 const DungeonBoard := preload("res://script/DungeonBoard.gd")
@@ -30,13 +31,21 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if _pc == null:
 		return
-	var source: Array = _new_ConvertCoord.vector_to_array(_pc.position)
 
+	var source: Array = _new_ConvertCoord.vector_to_array(_pc.position)
 	if _is_move_input(event):
 		emit_signal("clear_message")
 
 		var target = _get_new_position(event, source)
 		_try_move(target[0], target[1])
+		return
+
+	var _spell_input = _get_spell_input(event)
+	if _spell_input != "":
+		emit_signal("clear_message")
+
+		set_process_unhandled_input(false)
+		get_node(SPELL).cast_spell(_spell_input)
 		return
 
 	if event.is_action_pressed(_new_InputName.SKIP_TURN):
@@ -48,6 +57,7 @@ func _try_move(x: int, y: int) -> void:
 	if not _ref_DungeonBoard.is_inside_dungeon(x, y):
 		emit_signal("pc_moved", "You cannot leave the map")
 		return
+
 	if _ref_DungeonBoard.has_sprite(_new_GroupName.WALL, x, y):
 		emit_signal("pc_moved", "You bump into a wall")
 		return
@@ -70,6 +80,15 @@ func _is_move_input(event: InputEvent) -> bool:
 		if event.is_action_pressed(action):
 			return true
 	return false
+
+
+func _get_spell_input(event: InputEvent) -> String:
+	var actions = [_new_InputName.SPELL_FIREBALL, _new_InputName.SPELL_HEAL]
+	
+	for action in actions:
+		if event.is_action_pressed(action):
+			return action
+	return ""
 	
 	
 func _get_new_position(event: InputEvent, source: Array) -> Array:
