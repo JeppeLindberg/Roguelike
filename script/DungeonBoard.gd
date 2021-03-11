@@ -6,7 +6,7 @@ var _new_ConvertCoord := preload("res://script/library/ConvertCoord.gd").new()
 
 var _sprite_dict: Dictionary
 
-var groups = [_new_GroupName.ENEMY, _new_GroupName.WALL, _new_GroupName.GROUND,_new_GroupName.PC]
+var groups = [_new_GroupName.ENEMY, _new_GroupName.WALL, _new_GroupName.GROUND,_new_GroupName.PC, _new_GroupName.MANA]
 
 func _ready() -> void:
 	_init_dict()
@@ -46,6 +46,8 @@ func _on_InitWorld_sprite_created(new_sprite: Sprite) -> void:
 		group = _new_GroupName.GROUND
 	elif new_sprite.is_in_group(_new_GroupName.PC):
 		group = _new_GroupName.PC
+	elif new_sprite.is_in_group(_new_GroupName.MANA):
+		group = _new_GroupName.MANA
 	else:
 		return
 

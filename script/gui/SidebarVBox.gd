@@ -31,6 +31,9 @@ func _on_EnemyAttack_update_pc_health(new_health: int) -> void:
 func _update_text() -> void:
 	_label_sidebar.text = \
 		_turn_text.format([_turn_counter]) + '\n' + \
-		_health_text.format([_pc_health])
+		_health_text.format([_pc_health]) + '\n' + \
+		'\n' + \
+		"(1) Fireball" + '\n' + \
+		"(2) Ritual (Fire)"
 
 

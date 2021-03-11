@@ -7,5 +7,5 @@ const MOVE_UP: String = "move_up"
 const MOVE_DOWN: String = "move_down"
 
 const SPELL_FIREBALL: String = "spell_fireball"
-const SPELL_HEAL: String = "spell_heal"
+const SPELL_RITUAL_FIRE: String = "spell_ritual_fire"
 const CANCEL_SPELL: String = "cancel_spell"

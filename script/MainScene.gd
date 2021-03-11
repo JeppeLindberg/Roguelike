@@ -5,6 +5,7 @@ var __
 
 func _ready():
 	__ = get_node("InitWorld").connect("sprite_created", get_node("PCMove"), "_on_InitWorld_sprite_created")
+	__ = get_node("InitWorld").connect("sprite_created", get_node("PCMove/Spell"), "_on_InitWorld_sprite_created")
 	__ = get_node("InitWorld").connect("sprite_created", get_node("Schedule"), "_on_InitWorld_sprite_created")
 	__ = get_node("InitWorld").connect("sprite_created", get_node("DungeonBoard"), "_on_InitWorld_sprite_created")
 	__ = get_node("InitWorld").connect("sprite_created", get_node("EnemyAI"), "_on_InitWorld_sprite_created")
@@ -19,6 +20,7 @@ func _ready():
 	__ = get_node("RemoveObject").connect("sprite_removed", get_node("Schedule"), "_on_RemoveObject_sprite_removed")
 	__ = get_node("RemoveObject").connect("sprite_removed", get_node("EnemyAI"), "_on_RemoveObject_sprite_removed")
 	__ = get_node("RemoveObject").connect("sprite_removed", get_node("GameState"), "_on_RemoveObject_sprite_removed")
+	__ = get_node("RemoveObject").connect("sprite_removed", get_node("Magic"), "_on_RemoveObject_sprite_removed")
 
 	__ = get_node("PCMove").connect("pc_moved", get_node("MainGUI/MainHBox/Modeline"), "_on_PCMove_pc_moved")
 	__ = get_node("PCMove").connect("clear_message", get_node("MainGUI/MainHBox/Modeline"), "_on_PCMove_clear_message")
@@ -33,6 +35,8 @@ func _ready():
 
 	__ = get_node("MouseControl").connect("mouse_click", get_node("PCMove/Spell"), "_on_MouseControl_mouse_click")
 
+	get_node("Magic")._ref_InitWorld = get_node("InitWorld")
+
 	get_node("PCMove")._ref_Schedule = get_node("Schedule")
 	get_node("PCMove/PCAttack")._ref_Schedule = get_node("Schedule")
 	get_node("PCMove/Spell")._ref_Schedule = get_node("Schedule")
@@ -45,6 +49,7 @@ func _ready():
 	get_node("InitWorld")._ref_DungeonBoard = get_node("DungeonBoard")
 	get_node("Pathfinding")._ref_DungeonBoard = get_node("DungeonBoard")
 	get_node("EnemyAI/EnemyMove")._ref_DungeonBoard = get_node("DungeonBoard")
+	get_node("Magic")._ref_DungeonBoard = get_node("DungeonBoard")
 
 	get_node("PCMove/PCAttack")._ref_RemoveObject = get_node("RemoveObject")
 	get_node("PCMove/Spell")._ref_RemoveObject = get_node("RemoveObject")
@@ -55,3 +60,5 @@ func _ready():
 	get_node("PCMove/Spell")._ref_MouseControl = get_node("MouseControl")
 
 	get_node("PCMove/Spell")._ref_PCMove = get_node("PCMove")
+
+	get_node("PCMove/Spell")._ref_Magic = get_node("Magic")

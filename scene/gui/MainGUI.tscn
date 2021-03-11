@@ -25,19 +25,19 @@ size = 24
 font_data = SubResource( 5 )
 
 [node name="MainGUI" type="MarginContainer"]
-margin_right = 800.0
+margin_right = 900.0
 margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainHBox" type="HBoxContainer" parent="."]
-margin_right = 800.0
+margin_right = 900.0
 margin_bottom = 600.0
 
 [node name="Modeline" type="Label" parent="MainHBox"]
 margin_top = 569.0
-margin_right = 616.0
+margin_right = 716.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -47,8 +47,8 @@ text = "Text"
 script = ExtResource( 2 )
 
 [node name="SidebarVBox" type="VBoxContainer" parent="MainHBox"]
-margin_left = 620.0
-margin_right = 800.0
+margin_left = 720.0
+margin_right = 900.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 180, 0 )
 script = ExtResource( 1 )

@@ -34,13 +34,13 @@ func _init_world() -> void:
 	for x in range(0, _new_DungeonSize.MAX_X):
 		for y in range(0, _new_DungeonSize.MAX_Y):
 			if (abs(x - _new_DungeonSize.CENTER_X) <= 2) && (abs(y - _new_DungeonSize.CENTER_Y) <= 2):
-				_create_sprite(Wall, _new_GroupName.WALL, x, y)
+				create_sprite(Wall, _new_GroupName.WALL, x, y)
 			else:
-				_create_sprite(Floor, _new_GroupName.GROUND, x, y)
+				create_sprite(Floor, _new_GroupName.GROUND, x, y)
 
 
 func _init_PC() -> void:
-	_create_sprite(Player, _new_GroupName.PC, 0, 0);
+	create_sprite(Player, _new_GroupName.PC, 0, 0);
 
 
 func _init_enemies() -> void:
@@ -60,17 +60,21 @@ func _init_enemies() -> void:
 			i += 1
 			continue
 
-		_create_sprite(Dwarf, _new_GroupName.ENEMY, x, y)
+		create_sprite(Dwarf, _new_GroupName.ENEMY, x, y)
 		i += 1
 		enemy -= 1
 
 
-func _create_sprite(prefab: PackedScene, group: String, x: int, y: int, x_offset: int = 0, y_offset: int = 0) -> void:
+func create_sprite(prefab: PackedScene, group: String, x: int, y: int, sub_group: String = "") -> Sprite:
 	var new_sprite := prefab.instance() as Sprite
-	new_sprite.position = _new_ConvertCoord.index_to_vector(x, y, x_offset, y_offset)
+	new_sprite.position = _new_ConvertCoord.index_to_vector(x, y)
 	new_sprite.add_to_group(group)
+	if sub_group != "":
+		new_sprite.add_to_group(sub_group)
 
 	add_child(new_sprite)
 
 	emit_signal("sprite_created", new_sprite)
+
+	return new_sprite
 

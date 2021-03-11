@@ -83,7 +83,7 @@ func _is_move_input(event: InputEvent) -> bool:
 
 
 func _get_spell_input(event: InputEvent) -> String:
-	var actions = [_new_InputName.SPELL_FIREBALL, _new_InputName.SPELL_HEAL]
+	var actions = [_new_InputName.SPELL_FIREBALL, _new_InputName.SPELL_RITUAL_FIRE]
 	
 	for action in actions:
 		if event.is_action_pressed(action):
